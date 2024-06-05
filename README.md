@@ -18,6 +18,9 @@ The User API offers a comprehensive set of endpoints for managing user informati
 
 - Delete User (DELETE): https://api-user-five.vercel.app/api/users/{id}
 
+- Delete Song in User (DELETE): https://hirmify-api.vercel.app/api/{id}
+
+- Like Song in User (PATCH): https://hirmify-api.vercel.app/api/users/{id}
 
 
 ## Authorization
@@ -41,6 +44,22 @@ Login a user require a request body in the following format:
             "user_name": STRING,
             "user_password": STRING,
     }
+
+Delete a song in user require a request body in the following format:
+
+    { 
+	        "song_id": STIRNG  
+    }
+
+Like a song in user require a request body in the following format:
+
+    {
+        "song_id": STRING,
+        "song_name": STRING,
+        "song_url": STRING,
+        "song_image": STRING
+    }
+
 
 ## Feedback
 
