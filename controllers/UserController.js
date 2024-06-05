@@ -129,6 +129,40 @@ const updateSongInUser = async (req, res) => {
     }
 };
 
+//delete song in user
+// Delete song from user
+const deleteSongInUser = async (req, res) => {
+    const { id } = req.params; // User ID
+    const { song_id } = req.body; // Song ID to delete
+
+    try {
+        // Find the user by ID
+        const user = await User.findById(id);
+
+        if (!user) {
+            return res.status(404).json({ error: "No Such User" });
+        }
+
+        // Find the index of the song with the given ID in the user's songs array
+        const songIndex = user.songs.findIndex(song => song.song_id === song_id);
+
+        if (songIndex === -1) {
+            return res.status(404).json({ error: "Song not found in user's songs" });
+        }
+
+        // Remove the song from the user's songs array
+        user.songs.splice(songIndex, 1);
+
+        // Save the updated user document
+        await user.save();
+
+        res.status(200).json(user);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
+
 // User login
 const loginUser = async (req, res) => {
     const { user_name, user_password } = req.body;
@@ -165,5 +199,6 @@ module.exports = {
     deleteUser,
     updateUser,
     loginUser,
-    updateSongInUser
+    updateSongInUser,
+    deleteSongInUser
 };
