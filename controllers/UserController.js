@@ -171,7 +171,7 @@ const loginUser = async (req, res) => {
         const hashedPassword = CryptoJS.SHA256(user_password).toString(CryptoJS.enc.Hex);
 
         if (hashedPassword === user.user_password) {
-            const token = jwt.sign({ userId: user._id, user_role: user.user_role }, JWT_SECRET, { expiresIn: '1h' });
+            const token = jwt.sign({ userId: user._id, user_role: user.user_role }, JWT_SECRET, { expiresIn: '7d' });
             return res.json({
                 user_name: user.user_name,
                 user_id: user._id,
