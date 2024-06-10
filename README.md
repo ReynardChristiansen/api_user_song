@@ -25,7 +25,7 @@ The User API offers a comprehensive set of endpoints for managing user informati
 
 ## Authorization
 
-Getting all users, getting a user by Id, updating a user, and deleting a user require an authorization token provided by the **Login User**. The token must be included in the request headers as follows:
+Getting all users, getting a user by Id, updating a user, deleting a user, delete song in a user, and like song in a user require an authorization token provided by the **Login User**. The token must be included in the request headers as follows:
 
     Authorization: Bearer <token>
 ## Request Body
