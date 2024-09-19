@@ -165,7 +165,7 @@ const loginUser = async (req, res) => {
     try {
         const user = await User.findOne({ user_name });
         if (!user) {
-            return res.status(400).json({ error: "Invalid credentials" });
+            return res.status(400).json({ error: "User does not exist" });
         }
 
         const hashedPassword = CryptoJS.SHA256(user_password).toString(CryptoJS.enc.Hex);
