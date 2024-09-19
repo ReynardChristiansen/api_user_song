@@ -41,7 +41,7 @@ const createUser = async (req, res) => {
         const existingUser = await User.findOne({ user_name });
 
         if (existingUser) {
-            return res.status(400).json({ error: "User name already exists" });
+            return res.status(201).json({ error: "User name already exists" });
         }
         const hashedPassword = CryptoJS.SHA256(user_password).toString(CryptoJS.enc.Hex);
 
