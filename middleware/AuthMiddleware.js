@@ -14,7 +14,7 @@ const authenticateToken = (req, res, next) => {
         next();
     } catch (error) {
         console.error('JWT verification error:', error);
-        res.status(400).json({ error: 'Invalid token: ' + error.message });
+        res.status(400).json({ error: error.message });
     }
 };
 
